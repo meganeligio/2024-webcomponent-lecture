@@ -32,3 +32,22 @@
  * 12. At the bottom of the file use `customElements.define` allow the custom element
  * to be used in the HTML
  * */
+class NMAButton extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+
+        const buttonElement = document.createElement("a");
+        buttonElement.href = this.getAttribute("href");
+        buttonElement.innerHTML = this.innerHTML;
+        buttonElement.classList.add("button");
+
+        // if(this.hasAttribute('target')) {
+        //     buttonElement.setAttribute("target", this.getAnimations("target"));
+        // }
+
+        this.shadowRoot.append(buttonElement);
+    }
+}
+
+customElements.define('nma-button', NMAButton);
